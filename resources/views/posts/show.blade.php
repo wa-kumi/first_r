@@ -7,7 +7,8 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
-        <h1 class='title'>{{ $post->title }}</h1>
+        <h2>タイトル</h2>
+        <h2 class='title'>{{ $post->title }}</h2>
         <div class='posts'>
             <div class='content_post'>
                 <h3>本文</h3>
