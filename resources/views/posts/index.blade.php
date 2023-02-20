@@ -25,6 +25,11 @@
                 </div>
             @endforeach
         </div>
+        <div>
+            @foreach($questions as $question)
+                <div>{{ $question['title'] }}</div>
+            @endforeach
+        </div>
         <div class='paginate'>{{ $posts->links() }}</div>
         <script>
             function deletePost(id) {
