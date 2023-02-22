@@ -35,6 +35,9 @@
                 }
             }
         </script>
+        <div class='calendar'>
+            <a href="/calendar">カレンダー</a>
+        </div>
         <div>
             <p>ログインユーザー:{{ Auth::user()->name }}</p>
         </div>
