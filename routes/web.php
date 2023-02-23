@@ -46,9 +46,16 @@ Route::middleware('auth')->group(function () {
 
 // カレンダー用
 
-Route::get('/calendar', function(){
-    return view('schedules/calendar');
+Route::controller(ScheduleController::class)->middleware(['auth'])->group(function(){
+    Route::get('/calendar', 'index')->name('index');
+    Route::get('/calendar/create', 'create')->name('create');
+    Route::post('/calendar/store', 'store')->name('store');
+    
 });
+
+// Route::get('/calendar', function(){
+//     return view('schedules/calendar');
+// });
 
 // イベント登録処理
 Route::post('/schedule-add', [ScheduleController::class, 'scheduleAdd'])->name('schedule-add');
