@@ -6,7 +6,7 @@ import listPlugin from "@fullcalendar/list";
 import axios from 'axios';
 
 var calendarEl = document.getElementById("calendar");
-
+if(calendarEl != null){
 let calendar = new Calendar(calendarEl, {
     plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin, listPlugin],
     initialView: "dayGridMonth",
@@ -71,4 +71,6 @@ let calendar = new Calendar(calendarEl, {
     },
     
 });
-calendar.render();
+calendar.render();    
+
+}

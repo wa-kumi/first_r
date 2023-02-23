@@ -47,9 +47,9 @@ Route::middleware('auth')->group(function () {
 // カレンダー用
 
 Route::controller(ScheduleController::class)->middleware(['auth'])->group(function(){
-    Route::get('/calendar', 'index')->name('index');
-    Route::get('/calendar/create', 'create')->name('create');
-    Route::post('/calendar/store', 'store')->name('store');
+    Route::get('/calendar', 'index');
+    Route::get('/calendar/create', 'create');
+    Route::post('/calendar/store', 'store');
     
 });
 
@@ -61,6 +61,8 @@ Route::controller(ScheduleController::class)->middleware(['auth'])->group(functi
 Route::post('/schedule-add', [ScheduleController::class, 'scheduleAdd'])->name('schedule-add');
 // イベント取得処理
 Route::post('/schedule-get', [ScheduleController::class, 'scheduleGet'])->name('schedule-get');
+
+
 
 Route::get('/test', [PostController::class, 'test']);
 
