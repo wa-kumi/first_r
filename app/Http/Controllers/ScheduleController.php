@@ -7,6 +7,22 @@ use App\Models\Schedule;
 
 class ScheduleController extends Controller
 {
+    
+    public function index(){
+        return view('schedules/calendar');
+    }
+    
+    public function create(){
+        return view('schedules/create');
+    }
+    
+    public function store(Request $request, Schedule $schedule)
+    {
+        $input = $request['schedule'];
+        $schedule->fill($input)->save();
+        return redirect('/calendar/');
+    }
+    
     // イベント登録
     // @param Request $request
     
@@ -36,7 +52,7 @@ class ScheduleController extends Controller
     public function scheduleGet(Request $request){
         // バリデーション
         $request->validate([
-            'start_date' => 'required |integer',
+            'start_date' => 'required|integer',
             'end_date' => 'required|integer'
             ]);
         
