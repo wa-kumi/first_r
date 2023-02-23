@@ -3,7 +3,8 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
 <body>
-    <p>可憐だね</p>
+
+    <a href="/">戻る</a>
     
     <div id='calendar'></div>
 </body>
