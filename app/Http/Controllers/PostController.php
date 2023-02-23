@@ -49,4 +49,9 @@ class PostController extends Controller
         $post->delete();
         return redirect('/');
     }
+    
+    public function test(Category $test)
+    {
+        return view('tests/index')->with(['tests' => $test->get()]);
+    }
 }
