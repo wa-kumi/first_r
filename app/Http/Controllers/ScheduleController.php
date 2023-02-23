@@ -38,8 +38,8 @@ class ScheduleController extends Controller
         
         $schedule = new Schedule;
         // 日付に変換。JavaScriptのタイムスタンプはミリ秒なので秒に変換
-        $schedule->start_date = date('Y-m-d', ($request->input('start_date') / 1000) + 86400);
-        $schedule->end_date = date('Y-m-d', ($request->input('end_date') / 1000) + 86400);
+        $schedule->start_date = date('Y-m-d', $request->input('start_date') / 1000);
+        $schedule->end_date = date('Y-m-d', $request->input('end_date') / 1000);
         $schedule->event_name = $request->input('event_name');
         $schedule->save();
         logger($schedule);
