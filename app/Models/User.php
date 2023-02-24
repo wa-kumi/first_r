@@ -41,4 +41,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    
+    // Scheduleに対するリレーション
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class);
+    }
 }

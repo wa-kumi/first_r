@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Schedule;
+use Illuminate\Support\Facades\Auth;
 
 class ScheduleController extends Controller
 {
@@ -19,6 +20,7 @@ class ScheduleController extends Controller
     public function store(Request $request, Schedule $schedule)
     {
         $input = $request['schedule'];
+        $schedule['user_id'] = Auth::id();
         $schedule->fill($input)->save();
         return redirect('/calendar/');
     }
@@ -38,9 +40,12 @@ class ScheduleController extends Controller
         
         $schedule = new Schedule;
         // 日付に変換。JavaScriptのタイムスタンプはミリ秒なので秒に変換
+        // $schedule->start_date = datetime('Y-m-d', $request->input('start_date') / 1000);
+        // $schedule->end_date = datetime('Y-m-d', $request->input('end_date') / 1000);
         $schedule->start_date = date('Y-m-d', $request->input('start_date') / 1000);
         $schedule->end_date = date('Y-m-d', $request->input('end_date') / 1000);
         $schedule->event_name = $request->input('event_name');
+        $schedule->user_id = Auth::id();
         $schedule->save();
         logger($schedule);
         
@@ -62,6 +67,8 @@ class ScheduleController extends Controller
             $end_date = date('Y-m-d', $request->input('end_date') / 1000);
             
             
+
+            
             // 登録処理
             return Schedule::query()
             ->select(
@@ -70,6 +77,8 @@ class ScheduleController extends Controller
                 'event_name as title'
                 )
                 
+                // 自分のデータだけ取得
+                ->where('user_id', Auth::id())
                 // FullCalendarの表示範囲のみ表示
                 ->where('end_date', '>', $start_date)
                 ->where('start_date', '<', $end_date)

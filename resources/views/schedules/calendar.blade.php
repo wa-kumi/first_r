@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        　（ヘッダー名）
+        　
     </x-slot>
     
     <a href="/">戻る</a>

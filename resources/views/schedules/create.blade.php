@@ -12,8 +12,8 @@
             @csrf
             <div class="event">
                 <h2>日程</h2>
-                <input type="int" name="schedule[start_date]" placeholder="開始日"/>
-                <input type="int" name="schedule[end_date]" placeholder="終了日"/>
+                <input type="datetime-local" name="schedule[start_date]" placeholder="開始日" value="20223-03-23"/>
+                <input type="date" name="schedule[end_date]" placeholder="終了日"/>
                 <h2>イベント名</h2>
                 <input type="text" name="schedule[event_name]" placeholder="タイトル"/>
             </div>
