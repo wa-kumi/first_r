@@ -28,5 +28,15 @@ class PostSeeder extends Seeder
             'updated_at' => new DateTime(),
         ]);
         
+        DB::table('users')->insert([
+            'name' => 'aaaa',
+            'email' => 'ioioype3121@gmail.com',
+            'email_verified_at' => NULL,
+            'password' => '$2y$10$sUOFkAiShhzXSFnELDn4/.5K0BVgOiD7Q/l0i2Y/17Mf1nOacprFq',
+            'remember_token' => NULL,
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime()
+        ]);
+        
     }
 }
