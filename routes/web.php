@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\FriendRelationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +62,12 @@ Route::controller(ScheduleController::class)->middleware(['auth'])->group(functi
 Route::post('/schedule-add', [ScheduleController::class, 'scheduleAdd'])->name('schedule-add');
 // イベント取得処理
 Route::post('/schedule-get', [ScheduleController::class, 'scheduleGet'])->name('schedule-get');
+
+
+Route::controller(FriendRelationController::class)->middleware(['auth'])->group(function(){
+    Route::get('/friend/add','addFriend');
+    Route::post('/friend/store', 'store');
+});
 
 
 
